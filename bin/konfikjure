@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+# Copyright (C) 2014 Jurriaan Bremer.
+# This file is part of Konfikjure.
+# See the file 'docs/LICENSE.txt' for copying permission.
+
+import argparse
+
+from konfikjure.config import CONFIGFILES, VARIABLES
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('configuration', help='Configuration file.')
+    args = parser.parse_args()
+
+    execfile(args.configuration)
+
+    kw = {}
+    for var in VARIABLES:
+        kw[var.key] = var.prompt()
+
+    for cfg in CONFIGFILES:
+        cfg.write(**kw)
+
+
+if __name__ == '__main__':
+    main()
