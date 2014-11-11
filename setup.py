@@ -8,7 +8,7 @@ from setuptools import setup
 
 setup(
     name='Konfikjure',
-    version='0.1',
+    version='0.1.1',
     author='Jurriaan Bremer',
     author_email='jurriaanbremer@gmail.com',
     packages=[
